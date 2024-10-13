@@ -14,14 +14,8 @@
 - 安装必要的库
 
 ```bash
-pip install numpy Pillow opencv-python pyautogui
+pip install numpy Pillow opencv-python
 ```
-
-
-
-# TODO
-
-有空的话我会把结束后的点击部分从pyautogui改用adb实现(这只是图一乐，所以也有可能不改)
 
 
 
