@@ -128,24 +128,24 @@ def get_image_position(screenshot_name,template_name):
         return None
 
 # 模拟点击(OpenCV方案)
-def routine(img_model_path):
-    screenshot_path = f'{new_path}/screenshot_.png'
+def routine(img_model_path,image_name="screenshot_.png"):
+    screenshot_path = f'{new_path}/{image_name}'
     # 截取屏幕并保存
     screenshot = take_screenshot(screenshot_path)
     with open(screenshot_path, 'wb') as f:
         f.write(screenshot)
 
-    avg = get_image_position("screenshot_.png",img_model_path)
+    avg = get_image_position(image_name,img_model_path)
     os.system(f'adb shell input tap {avg[0]} {avg[1]}')
 
 def main():
     screenshot_path = f'{new_path}/screenshot.png'
- 
+
     # 截取屏幕并保存
     screenshot = take_screenshot(screenshot_path)
     with open(screenshot_path, 'wb') as f:
         f.write(screenshot)
- 
+
     # 定义裁剪区域（左，上，右，下）分别是两个数字在图片中的区域坐标
     clipping_region = lambda x,y : (x,y,x+120,y+150)
 
@@ -153,7 +153,7 @@ def main():
         clipping_region(440, 680),
         clipping_region(880,680)
     ]
- 
+
     cropped_images = []
     for i, crop_area in enumerate(crop_areas, start=1):
         cropped_image = process_image(screenshot_path, crop_area)
@@ -163,7 +163,7 @@ def main():
 
     text0 = get_number(cropped_images[0])
     text1 = get_number(cropped_images[1])
- 
+
     # 比较提取的数字
     compare_numbers(text0, text1)
 
@@ -174,14 +174,13 @@ if __name__ == '__main__':
         # 检测是否开始
         while True:
             try:
-                routine("GO.png")
+                routine("Ready.png")
                 break
             except Exception as e:
-                print("未开始")
+                print(f"未开始")
 
         # 做题
-        start_time = time()
-        while time() - start_time < 25:
+        for i in range(25):
             main()
             sleep(0.4) # 等待0.4 秒
 
@@ -191,7 +190,7 @@ if __name__ == '__main__':
                 routine("finish.png")
                 break
             except Exception as e:
-                print("未找到 开心收下 ，3秒后重试...")
+                print(f"未找到 开心收下 ，3秒后重试...")
                 sleep(3)  # 等待3秒后再次尝试
         sleep(0.5)
 
@@ -201,7 +200,7 @@ if __name__ == '__main__':
                 routine("continue.png")
                 break
             except Exception as e:
-                print("未找到 继续 ，3秒后重试...")
+                print(f"未找到 继续 ，3秒后重试...")
                 sleep(3)  # 等待3秒后再次尝试
         sleep(0.5)
 
@@ -210,5 +209,32 @@ if __name__ == '__main__':
                 routine("continuePK.png")
                 break
             except Exception as e:
-                print("未找到 继续PK ，3秒后重试...")
+                print(f"未找到 继续PK ，3秒后重试...")
                 sleep(3)  # 等待3秒后再次尝试
+
+
+
+3 < 3
+0 < 0
+0 < 0
+4 > 2
+5 > 0
+1 < 2
+1 > 0
+0 < 1
+2 < 3
+5 > 2
+0 < 2
+2 < 5
+4 < 5
+5 > 3
+3 < 5
+3 > 2
+5 > 4
+4 > 0
+3 > 0
+4 > 1
+2 > 0
+5 > 1
+1 < 4
+0 < 0
