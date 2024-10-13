@@ -19,6 +19,12 @@ pip install numpy Pillow opencv-python
 
 
 
+# TODO
+
+这一版把pyautogui换掉之后出了点小问题，偶尔会开始了但没检测到
+
+
+
 # 鸣谢
 
 参考代码https://blog.csdn.net/qq_45910820/article/details/142795826
