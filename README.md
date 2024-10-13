@@ -6,13 +6,24 @@
 
 当然，这个脚本相对抓包的方案来说并不快，因此看到这里的你可以把代码中的视觉部分改用抓包，这份代码的特色不过是全自动化罢了。
 
+
+
 # 必备工具
 
 - mumu模拟器
+- 安装必要的库
+
+```bash
+pip install numpy Pillow opencv-python pyautogui
+```
+
+
 
 # TODO
 
 有空的话我会把结束后的点击部分从pyautogui改用adb实现(这只是图一乐，所以也有可能不改)
+
+
 
 # 鸣谢
 
